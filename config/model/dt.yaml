@@ -1,0 +1,20 @@
+# @package model
+_target_: model.dt.DecisionTransformer
+name: dt
+state_dim: ???
+act_dim: ???
+action_range: ???
+max_length: 20    # K
+eval_context_length: 20
+max_ep_len: 1000
+hidden_size: 512
+n_inner: ???  ### make sure this is hidden_size * 4 in the code
+n_layer: 4
+n_head: 4
+activation_function: relu
+n_positions: 1024
+resid_pdrop: 0.1
+attn_pdrop: 0.1
+stochastic_policy: True
+ordering: 2
+target_entropy: ???

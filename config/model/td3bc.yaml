@@ -1,0 +1,12 @@
+# @package model
+_target_: model.td3bc.TD3BC
+name: td3bc
+state_dim: ???
+act_dim: ???
+action_range: ???
+discount: 0.99
+tau: 0.005
+policy_noise: 0.2
+noise_clip: 0.5
+policy_freq: 2
+alpha: 2.5

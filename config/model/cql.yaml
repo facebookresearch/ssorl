@@ -1,0 +1,6 @@
+# @package model
+_target_: model.cql.CQL
+name: cql
+state_dim: ???
+act_dim: ???
+action_range: ???

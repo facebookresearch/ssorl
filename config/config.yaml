@@ -1,0 +1,57 @@
+defaults:
+    - model: td3bc
+    - override hydra/launcher: submitit_local
+
+### setup
+device: cuda
+partition: learnfair
+num_eval_episodes: 30
+log_to_tb: True
+
+### experiment
+experiment: default
+seed: 10
+env: hopper-medium-expert-v2
+
+
+### training
+train_iters: 20
+num_updates_per_iter: 10000
+batch_size: 256
+
+### inverse_model
+inverse_model:
+    ensemble_size: 1
+    lr: 0.0001
+    hidden_dims: [1024, 1024]
+    spectral_norms: [False, False]
+    batch_size: 1024
+    total_train_iters: 100
+    num_past_transitions: 1
+    validation_perc: 0.1
+    dropout: 0.1
+
+
+### data
+data:
+    action_available_perc: 0.1
+    action_available_threshold: 0.5
+    need_pseudo_label: True
+
+### hydra
+hydra:
+  run:
+    dir: ./exp-local/${now:%Y.%m.%d}/${now:%H%M%S}_${experiment}
+  sweep:
+    dir: ./exp/${now:%Y.%m.%d}/${now:%H%M%S}_${experiment}
+    subdir: ${hydra.job.num}
+  launcher:
+    timeout_min: 4300
+    cpus_per_task: 12
+    gpus_per_node: 1
+    tasks_per_node: 1
+    mem_gb: 160
+    nodes: 1
+    submitit_folder: ./exp/${now:%Y.%m.%d}/${now:%H%M%S}_${experiment}/slurm
+  job:
+    name: ${experiment}
