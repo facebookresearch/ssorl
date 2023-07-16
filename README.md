@@ -10,11 +10,13 @@ and [Aditya Grover](https://aditya-grover.github.io/).
 
 If you use this code for your research, please cite us as:
 ```Bibtex
-@article{zheng2022semi,
+@inproceedings{zheng2023semi,
   title={Semi-supervised offline reinforcement learning with action-free trajectories},
   author={Zheng, Qinqing and Henaff, Mikael and Amos, Brandon and Grover, Aditya},
-  journal={arXiv preprint arXiv:2210.06518},
-  year={2022}
+  booktitle={International Conference on Machine Learning},
+  pages={42339--42362},
+  year={2023},
+  organization={PMLR}
 }
 ```
 
